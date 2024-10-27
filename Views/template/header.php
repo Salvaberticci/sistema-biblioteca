@@ -109,8 +109,8 @@
                         </a>
                         <div class="collapse" id="collapseClubes" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../lista_recursos.php">Recursos</a>
-                                <a class="nav-link active" href="<?php echo base_url(); ?>grupos">Grupos</a>
+                                <a class="nav-link active" href="../lista_recursos.php">Recursos</a>
+                                <a class="nav-link active" href="../clubes.php">Clubes</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed active" href="<?php echo base_url(); ?>/donaciones" data-toggle="collapse" data-target="#collapseDonaciones" aria-expanded="false" aria-controls="collapseDonaciones">
