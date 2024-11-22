@@ -84,7 +84,7 @@ if (isset($_GET['mensaje'])) {
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $recurso['nombre']; ?></h5>
                             <p class="card-text">Tipo: <?php echo $recurso['tipo']; ?></p>
-                            <a href="<?php echo $recurso['imagen']; ?>" class="btn btn-primary" download>Descargar Curso</a>
+                            <a href="<?php echo $recurso['imagen']; ?>" class="btn btn-primary" download>Descargar recurso</a>
                             
                             <!-- Botón para editar recurso -->
                             <button class="btn btn-warning" data-toggle="modal" data-target="#modalEditarRecurso" data-id="<?php echo $recurso['id']; ?>" data-nombre="<?php echo $recurso['nombre']; ?>" data-tipo="<?php echo $recurso['tipo']; ?>" data-imagen="<?php echo $recurso['imagen']; ?>">

@@ -113,6 +113,11 @@
                                 <a class="nav-link active" href="../clubes.php">Clubes</a>
                             </nav>
                         </div>
+                        <div class="collapse" id="collapseClubes" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link active" href="../foro.php">Foro</a>
+                            </nav>
+                        </div>
                         <a class="nav-link collapsed active" href="<?php echo base_url(); ?>/donaciones" data-toggle="collapse" data-target="#collapseDonaciones" aria-expanded="false" aria-controls="collapseDonaciones">
                             <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-heart fa-lg"></i></div>
                             Donaciones
