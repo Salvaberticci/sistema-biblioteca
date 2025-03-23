@@ -18,6 +18,7 @@ $imagenesPorTipo = [
     'Documento' => 'Assets/images/imagen_documento.avif',
     'Video' => 'Assets/images/imagen_video.jpg',
     'Imagen' => 'Assets/images/imagen_imagen.avif',
+    'Libro' => 'Assets/images/libro-icon.png',
 ];
 
 
@@ -27,9 +28,14 @@ $stmtLibros = $pdo->query($sqlLibros);
 $libros = $stmtLibros->fetchAll(PDO::FETCH_ASSOC);
 
 // Consulta de recursos
-$sqlRecursos = "SELECT nombre, tipo, imagen FROM recursos";
+$sqlRecursos = "SELECT id, nombre, tipo, imagen, archivo, created_at, updated_at FROM recursos";
 $stmtRecursos = $pdo->query($sqlRecursos);
 $recursos = $stmtRecursos->fetchAll(PDO::FETCH_ASSOC);
+
+// Obtener solo libros
+$librosDigitales = array_filter($recursos, function ($recurso) {
+    return $recurso['tipo'] === 'Libro';
+});
 ?>
 
 <!DOCTYPE html>
@@ -45,40 +51,49 @@ $recursos = $stmtRecursos->fetchAll(PDO::FETCH_ASSOC);
             background-color: #f5f5f5;
             font-family: Arial, sans-serif;
         }
+
         .navbar {
             background-color: #ed8414;
             color: #fff;
         }
+
         .navbar a {
             color: #fff;
             text-decoration: none;
         }
+
         .section-title {
             color: #2c662d;
             font-weight: bold;
             margin-top: 20px;
         }
+
         .card {
             border: none;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .card img {
             height: 150px;
             object-fit: cover;
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
         }
+
         .card-body {
             padding: 10px;
         }
+
         .btn-download {
             background-color: #2c662d;
             color: #fff;
         }
+
         .btn-download:hover {
             background-color: #248b24;
         }
+
         footer {
             position: fixed;
             bottom: 0;
@@ -129,11 +144,26 @@ $recursos = $stmtRecursos->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             <?php endforeach; ?>
         </div>
+
+        <!-- Sección de Libros -->
+        <h2 class="section-title">Libros Digitales Descargables</h2>
+        <div class="row">
+            <?php foreach ($librosDigitales as $libro): ?>
+                <div class="col-6 mb-4">
+                    <div class="card">
+                        <img src="<?php echo $libro['imagen']; ?>" class="card-img-top" alt="Portada del libro">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $libro['nombre']; ?></h5>
+                            <a href="<?php echo $libro['archivo']; ?>" class="btn btn-download btn-sm" download>Descargar Libro</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 
-    <footer>
-        © 2024 Biblioteca
-    </footer>
+
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
